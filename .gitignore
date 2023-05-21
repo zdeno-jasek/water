@@ -3,12 +3,17 @@
 
 # Log file
 *.log
+*.bin
+*.lock
 
 # BlueJ files
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+build/
+bin/
+.gradle/
 
 # Package Files #
 *.jar
