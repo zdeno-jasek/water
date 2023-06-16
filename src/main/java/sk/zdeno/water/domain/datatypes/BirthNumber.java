@@ -1,6 +1,7 @@
 package sk.zdeno.water.domain.datatypes;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * It represents a person's birth number.
@@ -11,9 +12,13 @@ import java.time.LocalDateTime;
  */
 public class BirthNumber {
 
-	private String value;
+	private final String value;
 
-	public LocalDateTime getBirthDate(){
+	public BirthNumber(String birthNumber) {
+		this.value = Objects.requireNonNull(birthNumber, "birthNumber must not be null");
+	}
+
+    public LocalDateTime getBirthDate(){
 		return null;
 	}
 
@@ -21,4 +26,7 @@ public class BirthNumber {
 		return false;
 	}
 
+    public String getBirthNumber() {
+		return value;
+    }
 }

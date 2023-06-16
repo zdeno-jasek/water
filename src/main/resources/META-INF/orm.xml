@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings
+	xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence/orm
+          https://jakarta.ee/xml/ns/persistence/orm/orm_3_0.xsd"
+	version="3.0">
+	<package>sk.zdeno.water.domain.waterconnection</package>
+	<entity
+		class="sk.zdeno.water.domain.applicant.Person" name="Person">
+		<table name="person" />
+		<attributes>
+			<id name="id">
+				<generated-value strategy="AUTO" />
+			</id>
+			<basic name="givenName" />
+			<basic name="familyName" />
+		</attributes>
+	</entity>
+</entity-mappings>
