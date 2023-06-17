@@ -4,5 +4,5 @@ public interface PersonRepository {
 
     void create(Person person);
     void update(Person person);
-    Person read(PersonId id) throws NotFoundException;
+    Person read(PersonId id);
 }

@@ -2,10 +2,15 @@ package sk.zdeno.water.domain.waterconnection;
 
 import sk.zdeno.water.domain.events.DomainEventPublisher;
 
-public class WaterConnectionFactory {
+public final class WaterConnectionFactory {
 
-	private DomainEventPublisher publisher;
-	private ValidateAddress validateAddress;
+	private final DomainEventPublisher publisher;
+	private final ValidateAddress validateAddress;
+
+	public WaterConnectionFactory(DomainEventPublisher publisher, ValidateAddress validateAddress){
+		this.publisher = publisher;
+		this.validateAddress = validateAddress;
+	}
 
 	public WaterConnection create(WaterConnectionBuilder applicationBuilder){
 		return null;

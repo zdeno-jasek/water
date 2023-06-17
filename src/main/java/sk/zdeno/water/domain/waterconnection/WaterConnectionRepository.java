@@ -1,8 +1,8 @@
 package sk.zdeno.water.domain.waterconnection;
 
-import java.util.Collection;
+import sk.zdeno.water.domain.applicant.PersonId;
 
-import sk.zdeno.water.domain.applicant.Person;
+import java.util.Collection;
 
 public interface WaterConnectionRepository {
 
@@ -12,8 +12,6 @@ public interface WaterConnectionRepository {
 
 	void update(WaterConnection application);
 
-	void delete(WaterConnection application);
-
-	Collection<WaterConnection> findByPerson(Person person);
+	Collection<WaterConnection> findByPerson(PersonId person);
 
 }

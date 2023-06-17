@@ -9,12 +9,12 @@ import java.util.Objects;
  * applicant when submitting an application.
  * Class responsibility is to hold information about one person.
  */
-public final class Person {
+public class Person {
 
-	private PersonId id;
+	private long id;
 	private String givenName;
 	private String familyName;
-	private final BirthNumber birthNumber;
+	private BirthNumber birthNumber;
 	private Address address;
 
 	public Person(String givenName, String familyName, String birthNumber) {
@@ -23,12 +23,16 @@ public final class Person {
 		this.birthNumber = new BirthNumber(birthNumber);
 	}
 
-	public PersonId getId() {
-		return id;
-    }
+	// Default constructor for JPA
+	@Deprecated
+	Person() {}
 
 	public Address getAddress() {
 		return address;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public BirthNumber getBirthNumber() {
@@ -41,13 +45,6 @@ public final class Person {
 
 	public String getGivenName() {
 		return givenName;
-	}
-
-	public void setId(long id) {
-		if ( this.id != null ) {
-			throw new IllegalStateException("Id is already set");
-		}
-		this.id = new PersonId(id);
 	}
 
 	public void setAddress(Address address) {

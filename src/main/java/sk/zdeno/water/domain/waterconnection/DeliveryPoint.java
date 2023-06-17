@@ -6,12 +6,7 @@ import sk.zdeno.water.domain.applicant.Address;
  * Place of water connection installation.
  * It contains more detailed information about the site, including the address.
  */
-public class DeliveryPoint {
-
-	private String parcel;
-	private String property;
-	private String area;
-	private Address address;
+public record DeliveryPoint( String parcel, String property, String area, Address address) {
 
 	public boolean checkDeliveryAddress(){
 		return false;

@@ -6,6 +6,7 @@
           https://jakarta.ee/xml/ns/persistence/orm/orm_3_0.xsd"
 	version="3.0">
 	<package>sk.zdeno.water.domain.waterconnection</package>
+	<access>FIELD</access>
 	<entity
 		class="sk.zdeno.water.domain.applicant.Person" name="Person">
 		<table name="person" />
@@ -15,6 +16,114 @@
 			</id>
 			<basic name="givenName" />
 			<basic name="familyName" />
+			<embedded name="address"/>
+			<embedded name="birthNumber">
+				<attribute-override name="value">
+					<column name="birth_number" />
+				</attribute-override>
+			</embedded>
+
 		</attributes>
 	</entity>
+	<entity class="sk.zdeno.water.domain.applicant.Company" name="company">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="AUTO" />
+			</id>
+			<basic name="name" />
+			<basic name="businessId"/>
+			<basic name="taxId"/>
+			<basic name="vatRegNumber"/>
+			<embedded name="address"/>
+		</attributes>
+	</entity>
+	<entity class="sk.zdeno.water.domain.waterconnection.WaterConnection" name="water_connection">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="AUTO" />
+			</id>
+			<basic name="projectStatus"/>
+			<basic name="waterSewerageType"/>
+			<basic name="connectionType"/>
+			<basic name="state"/>
+			<embedded name="applicant"/>
+			<embedded name="attachmentList"/>
+			<embedded name="deliveryPoint"/>
+			<embedded name="recordInfo"/>
+		</attributes>
+	</entity>
+	<entity class="sk.zdeno.water.domain.waterconnection.Attachment" name="attachment">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="AUTO" />
+			</id>
+			<basic name="fileUrl" />
+			<basic name="name" />
+			<basic name="type" />
+			<basic name="description"/>
+			<embedded name="recordInfo"/>
+		</attributes>
+	</entity>
+
+
+	<embeddable class="sk.zdeno.water.domain.waterconnection.AttachmentList">
+		<attributes>
+			<one-to-many name="attachments">
+				<join-column name="water_connection_id" />
+				<cascade/>
+			</one-to-many>
+		</attributes>
+	</embeddable>
+	<embeddable class="sk.zdeno.water.domain.waterconnection.DeliveryPoint">
+		<attributes>
+			<basic name="parcel" />
+			<basic name="property" />
+			<basic name="area" />
+			<embedded name="address"/>
+		</attributes>
+	</embeddable>
+	<embeddable class="sk.zdeno.water.domain.waterconnection.Applicant">
+		<attributes>
+			<embedded name="personId">
+				<attribute-override name="id">
+					<column name="person_id" />
+				</attribute-override>
+			</embedded>
+			<embedded name="companyId">
+				<attribute-override name="id">
+					<column name="company_id" />
+				</attribute-override>
+			</embedded>
+			<embedded name="contact"/>
+		</attributes>
+	</embeddable>
+	<embeddable class="sk.zdeno.water.domain.applicant.Address">
+		<attributes>
+			<basic name="street" />
+			<basic name="city" />
+			<basic name="zip" />
+		</attributes>
+	</embeddable>
+	<embeddable class="sk.zdeno.water.domain.datatypes.User">
+		<attributes>
+			<basic name="userName" />
+		</attributes>
+	</embeddable>
+
+	<embeddable class="sk.zdeno.water.domain.datatypes.RecordInfo">
+		<attributes>
+			<basic name="created" />
+			<basic name="updated" />
+			<embedded name="createdBy">
+				<attribute-override name="userName">
+					<column name="created_by" />
+				</attribute-override>
+			</embedded>
+			<embedded name="updatedBy">
+				<attribute-override name="userName">
+					<column name="updated_by" />
+				</attribute-override>
+			</embedded>
+		</attributes>
+	</embeddable>
 </entity-mappings>

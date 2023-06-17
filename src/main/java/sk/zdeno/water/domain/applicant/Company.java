@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Company {
 
-	private CompanyId id;
+	private long id;
 	private String name;
 	private String businessId;
 	private String taxId;
@@ -22,13 +22,14 @@ public class Company {
 		this.businessId = Objects.requireNonNull(businessId, "Business id must not be null");
 	}
 
+	// Default constructor for JPA
+	@Deprecated
+	Company() {}
+
 	public boolean isBusinessIdValid(String businessId){
 		return false;
 	}
 
-	public CompanyId getId() {
-		return id;
-	}
 
 	public String getName() {
 		return name;
@@ -50,19 +51,4 @@ public class Company {
 		return address;
 	}
 
-	public void setId(long id) {
-		this.id = new CompanyId( id );
-	}
-
-	public void setTaxId(String taxId) {
-		this.taxId = taxId;
-	}
-
-	public void setVatRegNumber(String vatRegNumber) {
-		this.vatRegNumber = vatRegNumber;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 }

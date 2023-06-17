@@ -12,28 +12,20 @@ import java.util.Optional;
 class PersonRepositoryH2 implements PersonRepository {
     @Autowired
     private PersonRepositorySpring repository;
-    @Autowired
-    private PersonMapper personMapper;
     @Override
     public void create(Person person) {
-        PersonJpa personJpa = personMapper.toJpa(person);
-        repository.save(personJpa);
-        person.setId( personJpa.id);
+        repository.save(person);
     }
 
     @Override
     public void update(Person person) {
-        PersonJpa personJpa = personMapper.toJpa(person);
-        repository.save(personJpa);
+        repository.save(person);
     }
 
     @Override
     public Person read(PersonId id) {
-        Optional<PersonJpa> personJpa = repository.findById(id.getId());
-        if (personJpa.isPresent()) {
-            return personMapper.fromJpa( personJpa.get() );
-        }
-        return null;
+        Optional<Person> personJpa = repository.findById(id.getId());
+        return personJpa.orElse(null);
     }
 
 }

@@ -12,11 +12,14 @@ import java.util.Objects;
  */
 public class BirthNumber {
 
-	private final String value;
+	private String value;
 
 	public BirthNumber(String birthNumber) {
 		this.value = Objects.requireNonNull(birthNumber, "birthNumber must not be null");
 	}
+
+	// Default constructor for JPA
+	BirthNumber() {}
 
     public LocalDateTime getBirthDate(){
 		return null;
