@@ -24,7 +24,7 @@ class PersonRepositoryH2 implements PersonRepository {
 
     @Override
     public Person read(PersonId id) {
-        Optional<Person> personJpa = repository.findById(id.getId());
+        Optional<Person> personJpa = repository.findById(id.id());
         return personJpa.orElse(null);
     }
 

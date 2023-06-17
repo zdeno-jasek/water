@@ -22,8 +22,8 @@ final class WaterConnectionMapper implements Mapper<WaterConnection, WaterConnec
             }
             WaterConnectionDto result = new WaterConnectionDto();
             result.id = waterConnection.getId();
-            result.personId = waterConnection.getApplicationPersonId().map(PersonId::getId).orElse(null);
-            result.companyId = waterConnection.getApplicationCompanyId().map(CompanyId::getId).orElse(null);
+            result.personId = waterConnection.getApplicationPersonId().map(PersonId::id).orElse(null);
+            result.companyId = waterConnection.getApplicationCompanyId().map(CompanyId::id).orElse(null);
             result.connectionType = waterConnection.getConnectionType().name();
             result.deliveryPoint = deliveryPointMapper.toDto( waterConnection.getDeliveryPoint() );
             result.contactEmail = waterConnection.getContactEmail();

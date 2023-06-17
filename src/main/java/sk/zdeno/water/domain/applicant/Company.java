@@ -51,4 +51,19 @@ public class Company {
 		return address;
 	}
 
+	public void setTaxId(String taxId) {
+		this.taxId = taxId;
+	}
+
+	public void setVatRegNumber(String vatRegNumber) {
+		this.vatRegNumber = vatRegNumber;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public long getId() {
+		return id;
+	}
 }
