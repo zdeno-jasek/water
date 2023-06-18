@@ -1,8 +1,7 @@
 package sk.zdeno.water.application.dto;
 
-public final class WaterConnectionDto {
+public final class WaterConnectionNewDto {
 
-    public long id;
     public Long personId;
     public Long companyId;
     public String contactEmail;
@@ -11,6 +10,5 @@ public final class WaterConnectionDto {
     public String connectionType;
     public String waterSewerageType;
     public String projectStatus;
-    public String state;
     public String createdBy;
 }

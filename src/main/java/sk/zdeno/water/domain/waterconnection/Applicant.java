@@ -6,6 +6,7 @@ import sk.zdeno.water.domain.datatypes.Contact;
 import sk.zdeno.water.domain.applicant.Person;
 import sk.zdeno.water.domain.applicant.Company;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -33,18 +34,24 @@ public class Applicant {
 	 */
 	private Contact contact;
 
+	@Deprecated
+	// Default constructor for JPA
+	Applicant(){}
+
 	/**
 	 * 
 	 */
-	public void Applicant(Person person, Contact contact){
-
+	public Applicant(PersonId personId){
+		this.personId = Objects.requireNonNull(personId, "PersonId cannot be null");
+		contact = Contact.EMPTY;
 	}
 
 	/**
 	 * 
 	 */
-	public void Applicant(Company company, Contact contact){
-
+	public Applicant(CompanyId companyId){
+		this.companyId = Objects.requireNonNull(companyId, "CompanyId cannot be null");
+		contact = Contact.EMPTY;
 	}
 
 	/**
@@ -52,12 +59,11 @@ public class Applicant {
 	 * the method creates a contact with blank contact information.
 	 */
 	public void update(Contact contact){
-
+		this.contact = contact == null ? Contact.EMPTY : contact;
 	}
 
-
 	public Contact getContact() {
-		return contact;
+		return contact == null ? Contact.EMPTY : contact;
 	}
 
 	public Optional<PersonId> getPersonId() {

@@ -1,6 +1,7 @@
 package sk.zdeno.water.domain.waterconnection;
 
 import sk.zdeno.water.domain.datatypes.RecordInfo;
+import sk.zdeno.water.domain.datatypes.User;
 
 /**
  * The class represents a single attachment. The attachment can be any document
@@ -20,5 +21,13 @@ public class Attachment {
 	private String description;
 	private RecordInfo recordInfo;
 	private AttachmentType type;
+
+	public Attachment(String name, String type, String description, String fileUrl, User user) {
+		this.name = name;
+		this.type = AttachmentType.valueOf(type);
+		this.description = description;
+		this.fileUrl = fileUrl;
+		this.recordInfo = new RecordInfo( user );
+	}
 
 }

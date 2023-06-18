@@ -1,5 +1,6 @@
 package sk.zdeno.water.domain.events;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 /**
@@ -8,6 +9,6 @@ import java.time.LocalDateTime;
  */
 public interface DomainEvent {
 
-	public LocalDateTime getOccuredOn();
+	public Instant getOccuredOn();
 
 }

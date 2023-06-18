@@ -7,4 +7,5 @@ package sk.zdeno.water.domain.waterconnection;
 public enum ConnectionType {
 	WATER_SUPPLY,
 	SEWERAGE
+
 }
