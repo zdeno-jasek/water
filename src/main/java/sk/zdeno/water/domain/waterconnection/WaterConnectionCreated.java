@@ -1,7 +1,6 @@
 package sk.zdeno.water.domain.waterconnection;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 import sk.zdeno.water.domain.events.DomainEvent;
 
@@ -12,7 +11,7 @@ public record WaterConnectionCreated(WaterConnection waterConnection) implements
 
 	@Override
 	public Instant getOccuredOn(){
-		return waterConnection.getRecordInfo().getCreated();
+		return null;
 	}
 
 }

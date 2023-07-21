@@ -3,8 +3,6 @@ package sk.zdeno.water.domain.waterconnection;
 import sk.zdeno.water.domain.applicant.CompanyId;
 import sk.zdeno.water.domain.applicant.PersonId;
 import sk.zdeno.water.domain.datatypes.Contact;
-import sk.zdeno.water.domain.applicant.Person;
-import sk.zdeno.water.domain.applicant.Company;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -73,4 +71,5 @@ public class Applicant {
 	public Optional<CompanyId> getCompanyId() {
 		return Optional.ofNullable(companyId);
 	}
+
 }

@@ -3,6 +3,7 @@ package sk.zdeno.water.domain.waterconnection;
 import sk.zdeno.water.domain.applicant.Address;
 import sk.zdeno.water.domain.applicant.CompanyId;
 import sk.zdeno.water.domain.applicant.PersonId;
+import sk.zdeno.water.domain.datatypes.Contact;
 import sk.zdeno.water.domain.datatypes.User;
 
 public final class WaterConnectionBuilder {
@@ -17,6 +18,12 @@ public final class WaterConnectionBuilder {
 	private WaterSewerageType waterSewerageType;
 	private ConnectionType connectionType;
 	private ProjectStatus projectStatus;
+	private Contact contact;
+
+	public WaterConnectionBuilder withContact(Contact contact) {
+		this.contact = contact;
+		return this;
+	}
 
 	public WaterConnectionBuilder withApplicant(PersonId personId) {
 		this.personId = personId;
@@ -104,5 +111,9 @@ public final class WaterConnectionBuilder {
 
 	public ProjectStatus getProjectStatus() {
 		return projectStatus;
+	}
+
+	public Contact getContact() {
+		return contact;
 	}
 }

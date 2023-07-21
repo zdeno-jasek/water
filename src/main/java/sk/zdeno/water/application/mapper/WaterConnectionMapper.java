@@ -31,6 +31,7 @@ final class WaterConnectionMapper implements Mapper<WaterConnection, WaterConnec
             result.projectStatus = waterConnection.getProjectStatus().name();
             result.state = waterConnection.getState().name();
             result.waterSewerageType = waterConnection.getWaterSewerageType().name();
+            result.createdBy = waterConnection.getRecordInfo().getCreatedBy().userName();
             return result;
         }
 

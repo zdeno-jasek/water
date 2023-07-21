@@ -5,16 +5,13 @@ import org.springframework.stereotype.Component;
 import sk.zdeno.water.application.controller.Build;
 import sk.zdeno.water.application.controller.Mapper;
 import sk.zdeno.water.application.dto.AddressDto;
-import sk.zdeno.water.application.dto.WaterConnectionDto;
 import sk.zdeno.water.application.dto.WaterConnectionNewDto;
 import sk.zdeno.water.domain.applicant.Address;
 import sk.zdeno.water.domain.applicant.CompanyId;
 import sk.zdeno.water.domain.applicant.PersonId;
+import sk.zdeno.water.domain.datatypes.Contact;
 import sk.zdeno.water.domain.datatypes.User;
-import sk.zdeno.water.domain.waterconnection.ConnectionType;
-import sk.zdeno.water.domain.waterconnection.ProjectStatus;
 import sk.zdeno.water.domain.waterconnection.WaterConnectionBuilder;
-import sk.zdeno.water.domain.waterconnection.WaterSewerageType;
 
 import java.util.Arrays;
 
@@ -36,6 +33,7 @@ class WaterConnectionBuild implements Build<WaterConnectionBuilder, WaterConnect
                 .withDeliveryProperty( dto.deliveryPoint.property )
                 .withWaterSewerageType(EnumTranslator.waterSewerageType(dto.waterSewerageType))
                 .withConnectionType(EnumTranslator.connectionType(dto.connectionType))
+                .withContact( new Contact(dto.contactEmail, dto.contactPhone))
                 .withProjectStatus(EnumTranslator.projectStatus(dto.projectStatus));
     }
 

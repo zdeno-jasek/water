@@ -6,6 +6,7 @@ import sk.zdeno.water.domain.datatypes.Contact;
 import sk.zdeno.water.domain.datatypes.RecordInfo;
 import sk.zdeno.water.domain.datatypes.User;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -38,7 +39,14 @@ public class WaterConnection {
 	 * @param applicant
 	 * @param deliveryPoint
 	 */
-	WaterConnection(User user, Applicant applicant, DeliveryPoint deliveryPoint){
+	WaterConnection(User user, Applicant applicant, DeliveryPoint deliveryPoint, ConnectionType connectionType){
+		this.recordInfo = new RecordInfo(user);
+		this.applicant = Objects.requireNonNull(applicant, "Applicant cannot be null");
+		this.deliveryPoint = Objects.requireNonNull(deliveryPoint, "DeliveryPoint cannot be null");
+		this.connectionType = Objects.requireNonNull(connectionType, "ConnectionType cannot be null");
+
+		this.attachmentList = new AttachmentList();
+		this.state = WaterConnectionState.REQUESTED;
 	}
 
 	// Default constructor for JPA
@@ -54,6 +62,14 @@ public class WaterConnection {
 	 */
 	public void update(Contact contact, int user){
 
+	}
+
+	public void setWaterSewerageType(WaterSewerageType waterSewerageType) {
+		this.waterSewerageType = waterSewerageType;
+	}
+
+	public void setProjectStatus(ProjectStatus projectStatus) {
+		this.projectStatus = projectStatus;
 	}
 
 	public long getId() {

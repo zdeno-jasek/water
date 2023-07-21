@@ -1,7 +1,6 @@
 package sk.zdeno.water.domain.waterconnection;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 import sk.zdeno.water.domain.events.DomainEvent;
 
@@ -11,7 +10,7 @@ import sk.zdeno.water.domain.events.DomainEvent;
 public record WaterConnectionUpdated( WaterConnection afterUpdate ) implements DomainEvent {
 
 	public Instant getOccuredOn(){
-		return afterUpdate.getRecordInfo().getUpdated();
+		return null;
 	}
 
 }

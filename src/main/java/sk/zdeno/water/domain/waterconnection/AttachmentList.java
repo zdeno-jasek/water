@@ -1,5 +1,6 @@
 package sk.zdeno.water.domain.waterconnection;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -11,6 +12,10 @@ import java.util.Collection;
 public class AttachmentList {
 
 	private Collection<Attachment> attachments;
+
+	AttachmentList() {
+		attachments = new ArrayList<>();
+	}
 
 	/**
 	 * The method adds a new attachment to the list. The method returns TRUE if the

@@ -1,6 +1,7 @@
 package sk.zdeno.water.domain.datatypes;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * The class represents data about the creation or updating data. The class
@@ -24,8 +25,15 @@ public class RecordInfo {
 	 * The input parameter is mandatory.
 	 */
 	public RecordInfo(User user){
-
+		createdBy = Objects.requireNonNull(user, "User cannot be null");
+		created = Instant.now();
+		updatedBy = user;
+		updated = Instant.now();
 	}
+
+	// Default constructor for JPA
+	@Deprecated
+	RecordInfo(){}
 
 	/**
 	 * The method creates a new RecordInfo object in which the user is consistently
@@ -35,7 +43,29 @@ public class RecordInfo {
 	 * The input parameter is mandatory.
 	 */
 	public RecordInfo update(User user){
-		return null;
+		return new RecordInfo(this, user);
 	}
 
+	private RecordInfo( RecordInfo original, User user ) {
+		createdBy = original.createdBy;
+		created = original.created;
+		updatedBy = Objects.requireNonNull(user, "User cannot be null");
+		updated = Instant.now();
+	}
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public Instant getCreated() {
+		return created;
+	}
+
+	public User getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public Instant getUpdated() {
+		return updated;
+	}
 }
